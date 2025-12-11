@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hai Hoang - PowerPoint Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-image: url('https://scontent.fhan3-5.fna.fbcdn.net/v/t39.30808-6/597845829_1332543921979601_3399663674516360979_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHXmG8UvNIhNQ2dcglohYwOyrFF4spk02_KsUXiymTTb2RlBhLFQubmyvQs8cS3rVSBh-dGPJ6Fp5vmM3lBWwBi&_nc_ohc=TJT1TF-9pgoQ7kNvwH-QPJP&_nc_oc=AdmWp_nRRLKVYukc1bb9Ds3TXKPv0DRbHYq_UZH4u1RN9dv8gLRQV2IsPIKj_Wk4pP9RrL87CMoU1ewxe7_dAe5q&_nc_zt=23&_nc_ht=scontent.fhan3-5.fna&_nc_gid=anVskNZA1bgF1H6eHKc2cQ&oh=00_AfmtiekQI_F4ljErjXJdGsLe4Vk3a5T92s0RVOaRyxsxzA&oe=6940BAA4');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* BONG BÓNG LẤP LÁNH */
+        #sparkle-bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .sparkle-bubble {
+            position: absolute;
+            bottom: -100px;
+            border-radius: 50%;
+            animation: bubble-float 20s infinite ease-in;
+            filter: blur(0.5px);
+            z-index: -1;
+        }
+        
+        /* Hiệu ứng lấp lánh */
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        
+        @keyframes bubble-float {
+            0% {
+                transform: translateY(0) translateX(0) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-120vh) translateX(20px) scale(1.5);
+                opacity: 0;
+            }
+        }
+        
+        /* Hiệu ứng ánh sáng bên trong bong bóng */
+        .sparkle-bubble::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 30%;
+            height: 30%;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: sparkle 2s infinite alternate;
+        }
+        
+        .sparkle-bubble::after {
+            content: '';
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            width: 15%;
+            height: 15%;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            filter: blur(0.5px);
+            animation: sparkle 1.5s infinite alternate-reverse;
+        }
+        
+        /* PowerPoint Container */
+        .powerpoint-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.35);
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+        
+        /* Slide Content - HIỆU ỨNG TRƯỢT LÊN */
+        .slide-content {
+            padding: 30px 50px 50px;
+            transform: translateY(100px);
+            opacity: 0;
+            animation: slideUp 1s ease-out 0.5s forwards;
+        }
+        
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Avatar and Name */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 8px solid rgba(232, 234, 237, 0.8);
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(to right, #1a237e, #311b92);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .title {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .info-card {
+            background: rgba(248, 249, 250, 0.9);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #1a237e;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-card h3 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-item i {
+            color: #311b92;
+            width: 20px;
+        }
+        
+        /* Links */
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .link-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: #1a237e;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.3);
+        }
+        
+        .link-btn:hover {
+            background: #311b92;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(49, 27, 146, 0.4);
+        }
+        
+        /* Màu cho Hoyolab và TikTok */
+        .link-btn.hoyolab {
+            background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%);
+        }
+        
+        .link-btn.tiktok {
+            background: linear-gradient(135deg, #000000 0%, #25F4EE 50%, #FE2C55 100%);
+        }
+        
+        .link-btn.hoyolab:hover {
+            background: linear-gradient(135deg, #FF8E53 0%, #FF6B9D 100%);
+        }
+        
+        .link-btn.tiktok:hover {
+            background: linear-gradient(135deg, #FE2C55 0%, #25F4EE 50%, #000000 100%);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .powerpoint-container {
+                margin: 10px;
+            }
+            
+            .slide-content {
+                padding: 20px 20px 30px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .avatar {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .link-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- BONG BÓNG LẤP LÁNH -->
+    <div id="sparkle-bubbles"></div>
+    
+    <!-- PowerPoint Container -->
+    <div class="powerpoint-container">
+        <div class="slide-content">
+            <div class="profile-header">
+                <img src="https://scontent-hkg4-1.xx.fbcdn.net/v/t39.30808-6/539160497_1245107727389888_1544147095896849107_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeG-J7JX5tE5cYtXoLpe_hCpklA5P5CRvm-SUDk_kJG-b84s0cwLd748gsdmXAmKZDZlOwoQ_rMHRlUdXs2YGsLp&_nc_ohc=MsIYpsp3wzAQ7kNvwF3SeSI&_nc_oc=AdlJ5vyZjO1pswrKt2eo3VFgU2A-sBSFv4OW2cRrNLap_BbsN6AtVQhfOyNeQYOxT1o&_nc_zt=23&_nc_ht=scontent-hkg4-1.xx&_nc_gid=egJilloC_6cDdBVIOeoXVA&oh=00_AfkUJa0SH9ECmHIDOj-XCANbrjU0KFpqfc6HrUlDII0jpA&oe=69401DC5" alt="Avatar" class="avatar">
+                <h1>Hai Hoang</h1>
+                <p class="title">VNU University of Engineering and Technology</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><i class="fas fa-user-circle"></i> Thông tin cá nhân</h3>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span><strong>Location:</strong> Vietnam</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <span><strong>Time:</strong> UTC +07:00</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-birthday-cake"></i>
+                        <span><strong>Birthday:</strong> 2007</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span><strong>Education:</strong> First-year student at UET</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-star"></i> Skills & Interests</h3>
+                    <div class="info-item">
+                        <i class="fas fa-code"></i>
+                        <span><strong>Programming languages:</strong> Python</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-gamepad"></i>
+                        <span><strong>Interests:</strong> Genshin, Music</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-language"></i>
+                        <span><strong>Language:</strong> Vietnamese, English</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-heart"></i>
+                        <span><strong>Furina</strong> is the best =))</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="links">
+                <a href="https://web.facebook.com/hihongg" target="_blank" class="link-btn">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://github.com/hihongg" target="_blank" class="link-btn">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.hoyolab.com/accountCenter/postList?id=213481607" target="_blank" class="link-btn hoyolab">
+                    <i class="fas fa-gamepad"></i> Hoyolab
+                </a>
+                <a href="https://www.tiktok.com/@hihonggacha" target="_blank" class="link-btn tiktok">
+                    <i class="fab fa-tiktok"></i> TikTok
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2025 Hai Hoang</p>
+       
+    </div>
+    
+    <script>
+        // TẠO BONG BÓNG LẤP LÁNH
+        function createSparkleBubbles() {
+            const container = document.getElementById('sparkle-bubbles');
+            const colors = [
+                'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4) 0%, rgba(200,230,255,0.2) 40%, rgba(173,216,230,0.1) 70%, transparent 100%)',
+                'radial-gradient(circle at 40% 40%, rgba(255,255,240,0.4) 0%, rgba(255,250,205,0.2) 40%, rgba(240,255,240,0.1) 70%, transparent 100%)',
+                'radial-gradient(circle at 30% 50%, rgba(240,255,255,0.4) 0%, rgba(224,255,255,0.2) 40%, rgba(175,238,238,0.1) 70%, transparent 100%)'
+            ];
+            
+            // Tạo 20 bong bóng
+            for (let i = 0; i < 20; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('sparkle-bubble');
+                
+                // Random properties
+                const size = 20 + Math.random() * 40;
+                const left = Math.random() * 100;
+                const duration = 15 + Math.random() * 25;
+                const delay = Math.random() * 15;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Apply styles
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${left}%`;
+                bubble.style.background = color;
+                bubble.style.animationDuration = `${duration}s`;
+                bubble.style.animationDelay = `${delay}s`;
+                
+                // Hiệu ứng bóng đổ và ánh sáng
+                bubble.style.boxShadow = `
+                    inset 0 0 20px rgba(255, 255, 255, 0.6),
+                    0 0 25px rgba(173, 216, 230, 0.5),
+                    0 0 40px rgba(135, 206, 250, 0.3),
+                    0 0 60px rgba(70, 130, 180, 0.2)
+                `;
+                
+                container.appendChild(bubble);
+            }
+        }
+        
+        // Hiệu ứng khi trang load xong
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hiệu ứng gõ chữ cho tiêu đề
+            const title = document.querySelector('h1');
+            const originalText = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            };
+            
+            // Tạo bong bóng
+            createSparkleBubbles();
+            
+            // Bắt đầu hiệu ứng gõ chữ sau 1 giây
+            setTimeout(typeWriter, 1000);
+        });
+        
+        // Thêm bong bóng mới mỗi phút
+        setInterval(() => {
+            const bubbles = document.querySelectorAll('.sparkle-bubble');
+            if (bubbles.length < 40) {
+                createSparkleBubbles();
+            }
+        }, 60000);
+    </script>
+</body>
+</html>
