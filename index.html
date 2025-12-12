@@ -306,7 +306,7 @@
             
             <div class="info-grid">
                 <div class="info-card">
-                    <h3><i class="fas fa-user-circle"></i> Thông tin cá nhân</h3>
+                    <h3><i class="fas fa-user-circle"></i> Information</h3>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <span><strong>Location:</strong> Vietnam</span>
@@ -378,8 +378,8 @@
                 'radial-gradient(circle at 30% 50%, rgba(240,255,255,0.4) 0%, rgba(224,255,255,0.2) 40%, rgba(175,238,238,0.1) 70%, transparent 100%)'
             ];
             
-            // Tạo 20 bong bóng
-            for (let i = 0; i < 20; i++) {
+            // Tạo 40 bong bóng
+            for (let i = 0; i < 40; i++) {
                 const bubble = document.createElement('div');
                 bubble.classList.add('sparkle-bubble');
                 
@@ -436,10 +436,10 @@
         // Thêm bong bóng mới mỗi phút
         setInterval(() => {
             const bubbles = document.querySelectorAll('.sparkle-bubble');
-            if (bubbles.length < 40) {
+            if (bubbles.length < 80) {
                 createSparkleBubbles();
             }
-        }, 60000);
+        }, 30000);
     </script>
 </body>
 </html>
