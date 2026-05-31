@@ -123,13 +123,46 @@
         }
 
         .hero-section {
+            position: relative;
             background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
             color: white;
             padding: 80px 50px;
             text-align: left;
+            overflow: hidden;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero-copy {
+            flex: 1;
+            min-width: 240px;
         }
         .hero-section h1 { margin: 0 0 15px 0; font-size: 2.8rem; font-weight: 800; }
         .hero-section p { color: rgba(255, 255, 255, 0.9); margin: 0; font-size: 1.2rem; }
+        .hero-image-wrapper {
+            position: absolute;
+            top: 50%;
+            right: 50px;
+            transform: translateY(-50%);
+            width: min(360px, 40%);
+            max-width: 380px;
+            min-width: 220px;
+            pointer-events: none;
+        }
+        .hero-image {
+            width: 100%;
+            display: block;
+            border-radius: 28px;
+            box-shadow: 0 35px 80px rgba(15, 23, 42, 0.25);
+            object-fit: cover;
+            mask-image: linear-gradient(to left, rgba(0,0,0,1) 28%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 28%, rgba(0,0,0,0) 100%);
+        }
 
         section {
             padding: 60px 50px 20px;
@@ -353,6 +386,15 @@
             .project-desc { display: none; }
             .tree-node { flex-wrap: wrap; }
             .tree-btn { margin-left: 0; margin-top: 5px; }
+            .hero-content { flex-direction: column; gap: 1.5rem; }
+            .hero-image-wrapper {
+                position: relative;
+                right: 0;
+                top: auto;
+                transform: none;
+                width: min(280px, 80%);
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
@@ -373,8 +415,15 @@
 
     <div class="main-content">
         <div class="hero-section">
-            <h1>👋 Xin chào, Mình là Hoàng Như Hải</h1>
-            <p>Không gian trưng bày Nhập môn công nghệ số & Ứng dụng Trí tuệ nhân tạo</p>
+            <div class="hero-content">
+                <div class="hero-copy">
+                    <h1>👋 Xin chào, Mình là Hoàng Như Hải</h1>
+                    <p>Không gian trưng bày Nhập môn công nghệ số & Ứng dụng Trí tuệ nhân tạo</p>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="https://raw.githubusercontent.com/hihongg/hihongg.github.io/main/avt.jpg" alt="Ảnh Hoàng Như Hải" class="hero-image">
+                </div>
+            </div>
         </div>
 
         <section id="gioi-thieu">
